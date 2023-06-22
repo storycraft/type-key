@@ -6,7 +6,10 @@
 
 #![doc = include_str!("../README.md")]
 
-use core::any::{Any, TypeId};
+use core::{
+    any::{Any, TypeId}
+};
+use std::marker::PhantomData;
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[repr(transparent)]
@@ -14,7 +17,12 @@ pub struct TypeKey(TypeId);
 
 impl TypeKey {
     pub fn of<T: ?Sized>() -> TypeKey {
-        TypeKey((&|| {}).type_id())
+        TypeKey(
+            (|| {
+                let _ = PhantomData::<T>;
+            })
+            .type_id(),
+        )
     }
 
     pub fn of_val<T: ?Sized>(_: &T) -> TypeKey {
