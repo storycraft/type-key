@@ -4,5 +4,6 @@ description = "Unique type identifier for any non-static type"
 version = "0.1.0"
 edition = "2021"
 authors = ["storycraft <storycraft@pancake.sh>"]
+license = "MIT"
 
 [dependencies]
