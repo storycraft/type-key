@@ -3,6 +3,8 @@ Unique type identifier for any non-static type (unlike `core::any::Any`)
 
 ## Usage
 ```rust
+use type_key::TypeKey;
+
 let a = 1;
 let closure = || &a;
 
